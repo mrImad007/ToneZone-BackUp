@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    @include('partials._head')
+</head>
+
+<body class="bg-gradient-to-r from-black to-gray-700">
+
+    {{-- load this flash messge after register succes --}}
+
+    <!-- partial:index.partial.html -->
+    <div class="grid grid-rows-3 grid-cols-6 h-screen">
+
+        {{-- asidebar componenet --}}
+        <x-asidebar :playlists="$playlists" />
+        {{-- body --}}
+        <main class="col-span-5 row-span-3 ml-2 overflow-y-scroll scrollbar-hide">
+            {{-- header of body --}}
+            <header class="px-6 py-4 flex items-center justify-around sticky top-0 z-10 fixed">
+                {{-- include the search bar --}}
+                @include('partials._search')
+                <div class="flex items-center">
+                    @auth
+                        @if (auth()->user()->role !== 1)
+                            <div class="flex items-center gap-2">
+                                <span class="text-blue-400 text-sm font-bold">{{auth()->user()->name}}</span>
+                                <img id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" src="{{asset('images/avatar.jpg')}}" alt="" class="cursor-pointer w-[30px] rounded-full hover:border-blue-400 hover:border-2">
+                                <a href="/logout" class=" text-white py-2 px-4 text-sm  hover:text-blue-400 "><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+                            </div>
+                        @else 
+                            <div  class="flex items-center gap-4">
+                                <span class="text-blue-400 font-bold">Admin: {{auth()->user()->name}}</span>
+                                <img id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" src="{{asset('images/avatar.jpg')}}" alt="" class="cursor-pointer w-[30px]  hover:border-blue-400 hover:border-2">
+                                <!-- Dropdown menu -->
+                                <div id="userDropdown" class="bg-gray-800 hidden z-10 w-44 text-white rounded border border-gray-700 divide-y divide-gray-100 shadow">
+                                    <ul class="py-1 text-sm " aria-labelledby="avatarButton">   
+                                        <li>
+                                            <a href="/admin/dashboard" class="block py-2 px-4 hover:bg-blue-400 hover:text-black ">Dashboard</a>
+                                        </li>
+                                    </ul>
+                                    <div class="py-1">
+                                        <a href="/logout" class="block py-2 px-4 text-sm hover:bg-gray-100 hover:bg-blue-400 hover:text-black ">Logout</a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                    @else
+                        <a href="/login"><button type="button" class="text-black bg-blue-400 font-semibold hover:bg-blue-600 rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 ">Login</button></a>
+                        <a href="/register"><button type="button" class="text-blue-400 bg-none font-semibold hover:bg-blue-400 hover:text-black rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 ">Register</button></a>
+                    @endauth
+                </div>
+            </header>
+
+
+            {{$slot}}
+
+        </main>
+        
+        {{-- footer components --}}
+        <x-footer />
+
+    </div>
+    <!-- partial -->
+
+</body>
+    <script src="https://unpkg.com/flowbite@1.5.5/dist/flowbite.js"></script>
+    <script src="https://kit.fontawesome.com/e3e5f279fe.js" crossorigin="anonymous"></script>
+
+    <script src="{{asset('js/handleMusic.js')}}" defer></script>
+    <script src="{{asset('js/handleUpladFile.js')}}" defer></script>
+
+</html>
