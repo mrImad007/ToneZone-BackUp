@@ -9,7 +9,7 @@
         <a href="/admin/addArtist" class="text-black text-end fixed p-2 w-12 aspect-square bg-blue-400 rounded-full cursor-pointer flex items-center justify-center">
             <i class="fa-solid fa-plus text-3xl"></i>
         </a>
-    </div>
+    </div><br><br><br>
     <div class="grid grid-cols-4 gap-4">
         @foreach ($artists as $artist)
             <div id="music" class="allMusics bg-gray-900 flex flex-col gap-3 rounded-sm hover:bg-gray-700 transition-all duration-500 group shadow-[0px_0px_5px] shadow-blue-400">

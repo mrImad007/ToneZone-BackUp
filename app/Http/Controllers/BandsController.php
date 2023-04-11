@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Artist;
 use App\Models\Band;
 use App\Models\BandMembers;
 use Illuminate\Http\Request;
@@ -11,7 +12,10 @@ use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 class BandsController extends Controller
 {
     public function createBandForm() {
-        return view('Dash.admin.band-form');
+        $artists = Artist::all();
+        return view('Dash.admin.band-form', [
+            'artists' => $artists
+        ]);
     }
 
     public function editBandForm(Band $band) {

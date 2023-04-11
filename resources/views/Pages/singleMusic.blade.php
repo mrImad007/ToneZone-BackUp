@@ -18,7 +18,7 @@
                 <h3 class="font-bold text-7xl">{{$music->music_name}}</h3>
                 <div class="flex gap-2 items-center">
                     <img src="{{asset('images/avatar.jpg')}}" alt="" class="rounded-full w-[25px]">
-                    <p class="">Artist Name. {{ \Illuminate\Support\Str::limit($music->created_at, 4, $end=' ') }} </p>
+                    <p class="">{{$music->artist_group}}. {{ \Illuminate\Support\Str::limit($music->created_at, 4, $end=' ') }} </p>
                 </div>
             </div>
         </div>

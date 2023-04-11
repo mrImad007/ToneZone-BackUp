@@ -75,7 +75,7 @@
                                     <a href="/deleteMusic/{{$music->id_pm}}"><i class="fa-solid fa-trash text-red-400 hover:text-red-500"></i></a>
                                 </td>
                                 <td class="hidden">
-                                    <audio controls src="{{asset('audio/desert.mp3')}}" class="audio"></audio>
+                                    <audio controls src="{{$music->music_audio}}" class="audio"></audio>
                                 </td>
                             </tr>
                         @endforeach

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Artist;
 use App\Models\Music;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -11,7 +12,11 @@ class MusicsController extends Controller
 {
     // method that show form to add a music
     public function musicForm() {
-        return view('Dash.admin.music');
+        $artists = Artist::all();
+        // dd($artists);
+        return view('Dash.admin.music',[
+            'artists' => $artists
+        ]);
     }
 
     // method that store the music in db
@@ -20,10 +25,10 @@ class MusicsController extends Controller
         $formField = $request->validate([
             'music_name' => 'required',
             'music_image' => 'required',
-            'music_audio' => 'required|mimes:mp3',
+            'music_audio' => 'required',
             'artist_group' => 'required',
         ]);
-
+        // dd($formField);
         // store the audio and image into cloudinary
         $uploadAudio = Cloudinary::uploadFile($request->file('music_audio')->getRealPath(),[
             'folder' => 'Music'
@@ -46,8 +51,10 @@ class MusicsController extends Controller
     }
 
     public function editMusicForm(Music $music) {
+        $artists = Artist::all();
         return view('Dash.admin.music-edit', [
-            'music' => $music
+            'music' => $music,
+            'artists' => $artists
         ]);
     }
     public function storeEditMusic(Request $request, Music $music) {

@@ -28,7 +28,7 @@
                                 <div id="userDropdown" class="bg-gray-800 hidden absolute top-6 z-10 w-44 text-white rounded border border-gray-700 divide-y divide-gray-100 shadow">
                                     <ul class="py-1 text-sm " aria-labelledby="avatarButton">   
                                         <li>
-                                            <a href="/admin/editArtistForm/{{$play->id}}" class="block py-2 px-4 text-center text-green-400 hover:bg-blue-400 hover:text-black"><i class="fa-solid fa-pen mr-2"></i>Edit playlist</a>
+                                            <a href="/editPlaylist/{{$play->id}}" class="block py-2 px-4 text-center text-green-400 hover:bg-blue-400 hover:text-black"><i class="fa-solid fa-pen mr-2"></i>Edit playlist</a>
                                         </li>
                                         <li class="">
                                             <button data-modal-toggle="deleteModal" value="{{$play->id}}" class="deleteBtn text-red-500 text-center block py-2 px-4 hover:bg-blue-400 hover:text-black w-full">

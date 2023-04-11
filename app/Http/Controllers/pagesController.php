@@ -58,6 +58,7 @@ class pagesController extends Controller
 
         // get all comment on specifique music
         $comments = $music->comment;
+        $artist = $music->artist_group;
 
         // dd($userMusicLiked->where('music_id' , '=' , $music->id)->first());
 
@@ -65,7 +66,8 @@ class pagesController extends Controller
             'playlists' => $playlists ? $playlists->playlist : "",
             'music' => $music,
             'like' => $userMusicLiked ? true : false,
-            'comments' => $comments
+            'comments' => $comments,
+            'artist' => $artist
         ]);
     }
 

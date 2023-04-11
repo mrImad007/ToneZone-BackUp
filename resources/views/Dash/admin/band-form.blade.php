@@ -15,8 +15,14 @@
             {{-- band memebers --}}
             <div class="w-full mb-6 group items-center" id="showInp">
                 <div class="relative z-0">
-                    <input type="text" name="band_members[]" value="" id="floating_password" class="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-blue-600 appearance-none focus:outline-none focus:ring-0 focus:border-blue-400 peer" placeholder=" "/>
-                    <label for="band_members[]" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Band Member 1</label>
+                    {{-- <input type="text" name="band_members[]" value="" id="floating_password" class="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-blue-600 appearance-none focus:outline-none focus:ring-0 focus:border-blue-400 peer" placeholder=" "/> --}}
+                    <select name="band_members[]" id="" class="w-full py-2 px-4 rounded-xl bg-transparent border border-gray-400 outline-none focus:ring-yellow-400">
+                        <option value="choose_artist">Choose the artist</option> 
+                        @foreach ($artists as $artist)
+                            <option  value="{{$artist->artist_name}}">{{ $artist->artist_name }}</option>
+                        @endforeach
+                    </select><br>
+                    <label for="band_members[]" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"></label>
                     {{-- @error('band_members[]')
                         <span class="text-red-500">{{$message}}</span>
                     @enderror --}}

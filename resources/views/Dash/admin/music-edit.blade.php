@@ -32,7 +32,13 @@
                 </div>
 
                 <div class="flex flex-col">
-                    <input type="text" name="artist_group" value="{{$music->artist_group}}" placeholder="Group Name" class="w-full py-2 px-4 rounded-xl bg-transparent border border-gray-400 outline-none focus:ring-yellow-400">
+                    {{-- <input type="text" name="artist_group" value="{{$music->artist_group}}" placeholder="Group Name" class="w-full py-2 px-4 rounded-xl bg-transparent border border-gray-400 outline-none focus:ring-yellow-400"> --}}
+                    <select name="artist_group" id="" class="w-full py-2 px-4 rounded-xl bg-transparent border border-gray-400 outline-none focus:ring-yellow-400">
+                        <option value="choose_artist">Choose the artist</option> 
+                        @foreach ($artists as $artist)
+                            <option  value="{{$artist->artist_name}}">{{ $artist->artist_name }}</option>
+                        @endforeach
+                    </select>
                     {{-- load page if some field are wrong or error --}}
                     @error('artist_group')
                         <span class="text-red-500 text-xs mt-1">{{$message}}</span>
